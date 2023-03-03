@@ -34,6 +34,28 @@ public class MainActivity extends AppCompatActivity {
                 client.execute(number.getText().toString());
             }
         });
+        btnCalc.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                calcStepTwo(number.getText().toString());
+            }
+        });
+    }
+
+    private void calcStepTwo(String s){
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        String out ="";
+
+        for(char c : s.toCharArray()){
+            numbers.add(c-'0');
+        }
+        Collections.sort(numbers);
+
+        for(int i: numbers){
+            if(!(i ==2 || i == 3|| i==5||i==7)){
+                out+=i;
+            }
+        }
+        setAnswer(out);
     }
     protected static void setAnswer(String s){
         answer.setText(s);

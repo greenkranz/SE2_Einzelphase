@@ -38,6 +38,7 @@ public class ServerConnection extends AsyncTask<String,String,String> {
         super.onPostExecute(s);
         System.out.println(s);
         MainActivity.setAnswer(s);
+        MainActivity.setBtnSendState(true);
     }
 
     public void writeMessage(Socket socket, String nachricht) throws IOException {

@@ -12,10 +12,10 @@ import java.util.Collections;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnSend;
+    private static Button btnSend;
     private Button btnCalc;
     private TextView number;
-    static private TextView answer;
+    private static  TextView answer;
 
 
     @Override
@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+               setBtnSendState(false);
                 ServerConnection client = new ServerConnection();
                 client.execute(number.getText().toString());
+
             }
         });
         btnCalc.setOnClickListener(new View.OnClickListener() {
@@ -60,4 +62,9 @@ public class MainActivity extends AppCompatActivity {
     protected static void setAnswer(String s){
         answer.setText(s);
     }
+    static void setBtnSendState(boolean state){
+        btnSend.setEnabled(state);
+    }
+
+
 }
